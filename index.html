@@ -5,67 +5,267 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Art Portfolio</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Fixed Left Sidebar */
         .sidebar {
             position: fixed;
             left: 0;
             top: 0;
-            width: 200px;
-            height: 100%;
-            background-color: #333;
-            color: white;
-            padding: 20px;
+            width: 20%;
+            height: 100vh;
+            background-color: #f5f5f5;
+            padding: 40px 20px;
+            overflow-y: auto;
+            border-right: 2px solid #ddd;
         }
-        .content {
-            margin-left: 220px;
-            padding: 20px;
+
+        .sidebar h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
         }
-        .profile {
+
+        .sidebar p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        /* Right Profile Section */
+        .profile-section {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
+            right: 0;
+            top: 0;
+            width: 25%;
+            height: 100vh;
+            background-color: #8b4423;
             overflow: hidden;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
         }
-        .profile img {
+
+        .profile-section img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
         }
+
+        .profile-text {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            color: white;
+            text-align: right;
+        }
+
+        .profile-text h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .profile-text p {
+            font-size: 14px;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            margin-left: 20%;
+            margin-right: 25%;
+            padding: 40px;
+            width: calc(55% - 40px);
+            overflow-y: auto;
+            height: 100vh;
+        }
+
+        /* Gallery */
         .gallery {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 30px;
         }
-        .gallery img {
-            margin: 10px;
-            width: calc(33.33% - 20px);
+
+        .gallery-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .gallery-item.left {
+            flex-direction: row;
+        }
+
+        .gallery-item.right {
+            flex-direction: row-reverse;
+        }
+
+        .gallery-item img {
+            width: 45%;
             height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item-text {
+            width: 55%;
+        }
+
+        .gallery-item-text h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .gallery-item-text p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 25%;
+            }
+
+            .profile-section {
+                width: 25%;
+            }
+
+            .main-content {
+                margin-left: 25%;
+                margin-right: 25%;
+                width: calc(50% - 40px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                border-right: none;
+                border-bottom: 2px solid #ddd;
+            }
+
+            .profile-section {
+                position: relative;
+                width: 100%;
+                height: 300px;
+            }
+
+            .main-content {
+                margin-left: 0;
+                margin-right: 0;
+                width: 100%;
+                height: auto;
+            }
+
+            .gallery-item img {
+                width: 100%;
+            }
+
+            .gallery-item-text {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Fixed Left Sidebar -->
     <div class="sidebar">
-        <h2>Artist Description</h2>
-        <p>Welcome to my art portfolio! Here you can explore my latest works and learn more about me as an artist.</p>
+        <h2>Artist Name</h2>
+        <p>Hi I'm Robbie, I'm an Artist & Illustrator based in Co. Antrim, Northern Ireland.
+
+My illustration work employs a blend of digital and traditional methods to create angular & playful imagery.
+
+My process is often very spontaneous and instinctual when pursuing ideas, using a variety of traditional mediums that I edit digitally. My practice has always been at the core of who I am, always thinking visually and creatively with the intent to have my voice and personality shine through.
+
+I am eager to work in the fields of character design, concept art and illustrative work but I am always open and enthusiastic about new opportunities to branch out!
+
+Currently studying in my final year of Graphic Design & Illustration; I'm looking forward to kickstarting my career in 2026.</p>
     </div>
-    <div class="content">
+
+    <!-- Main Content Area -->
+    <div class="main-content">
         <div class="gallery">
-            <img src="image1.jpg" alt="Artwork 1">
-            <img src="image2.jpg" alt="Artwork 2">
-            <img src="image3.jpg" alt="Artwork 3">
-            <img src="image4.jpg" alt="Artwork 4">
-            <img src="image5.jpg" alt="Artwork 5">
-            <img src="image6.jpg" alt="Artwork 6">
+            <!-- Artwork 1 -->
+            <div class="gallery-item left">
+                <img src="image1.jpg" alt="Artwork 1">
+                <div class="gallery-item-text">
+                    <h3>Artwork Title 1</h3>
+                    <p>Description of this piece and the inspiration behind it.</p>
+                </div>
+            </div>
+
+            <!-- Artwork 2 -->
+            <div class="gallery-item right">
+                <img src="image2.jpg" alt="Artwork 2">
+                <div class="gallery-item-text">
+                    <h3>Artwork Title 2</h3>
+                    <p>Description of this piece and the inspiration behind it.</p>
+                </div>
+            </div>
+
+            <!-- Artwork 3 -->
+            <div class="gallery-item left">
+                <img src="image3.jpg" alt="Artwork 3">
+                <div class="gallery-item-text">
+                    <h3>Artwork Title 3</h3>
+                    <p>Description of this piece and the inspiration behind it.</p>
+                </div>
+            </div>
+
+            <!-- Artwork 4 -->
+            <div class="gallery-item right">
+                <img src="image4.jpg" alt="Artwork 4">
+                <div class="gallery-item-text">
+                    <h3>Artwork Title 4</h3>
+                    <p>Description of this piece and the inspiration behind it.</p>
+                </div>
+            </div>
+
+            <!-- Artwork 5 -->
+            <div class="gallery-item left">
+                <img src="image5.jpg" alt="Artwork 5">
+                <div class="gallery-item-text">
+                    <h3>Artwork Title 5</h3>
+                    <p>Description of this piece and the inspiration behind it.</p>
+                </div>
+            </div>
+
+            <!-- Artwork 6 -->
+            <div class="gallery-item right">
+                <img src="image6.jpg" alt="Artwork 6">
+                <div class="gallery-item-text">
+                    <h3>Artwork Title 6</h3>
+                    <p>Description of this piece and the inspiration behind it.</p>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="profile">
-        <img src="profile.jpg" alt="Profile Image">
+
+    <!-- Fixed Right Profile Section -->
+    <div class="profile-section">
+        <img src="profile.jpg" alt="Artist Profile">
+        <div class="profile-text">
+            <h1>Rob.inn</h1>
+            <p>Robbie Armstrong</p>
+            <p>Artist & Illustrator</p>
+        </div>
     </div>
 </body>
 </html>
