@@ -14,7 +14,7 @@ body{
     height: 75vh;
     background-color: #8b4423;
     overflow: hidden;
-    border-radius: 12px 0 0 12px;
+    border-radius: 12px 0 12px 12px;
 }
   .profile-section-image {
     max-width: 100%;
