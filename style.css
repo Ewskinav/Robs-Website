@@ -6,3 +6,10 @@ body{
     display: block;
     margin: 0 auto 20px auto;
 }
+
+  .profile-section-image {
+    max-width: 90%;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px auto;
+}
